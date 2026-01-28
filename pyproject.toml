@@ -2,7 +2,7 @@
 package-mode = false
 name = "chatwoot-integrations"
 version = "0.1.0"
-description = ""
+description = "nothing-special"
 authors = [
     {name = "@feel90d",email = "feel90d@gmail.com"},
     {name = "@lukyan0v_a",email = "forjob34@gmail.com"},
