@@ -29,9 +29,9 @@ COPY app ./app
 COPY pyproject.toml ./
 
 ENV PYTHONPATH=/app \
-    PORT=3000
+    PORT=4000
 
-EXPOSE 3000
+EXPOSE 4000
 
 # Bind to 0.0.0.0 so container accepts external connections
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT}"]
