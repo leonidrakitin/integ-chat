@@ -2,8 +2,8 @@ FROM python:3.11-slim AS builder
 
 WORKDIR /app
 
-# Install Poetry
-ENV POETRY_VERSION=1.8.5 \
+# Install Poetry (match poetry.lock generator version)
+ENV POETRY_VERSION=2.1.4 \
     POETRY_HOME="/opt/poetry" \
     POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=true
@@ -13,9 +13,9 @@ RUN pip install --no-cache-dir "poetry==${POETRY_VERSION}"
 # Copy dependency files
 COPY pyproject.toml poetry.lock* ./
 
-# Install dependencies (no dev, no root package)
+# Install dependencies (main group only, no root package)
 RUN poetry config virtualenvs.create false \
-    && poetry install --no-dev --no-root
+    && poetry install --only main --no-root
 
 # ---
 FROM python:3.11-slim AS runtime
